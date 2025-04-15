@@ -143,7 +143,7 @@ impl TaskManager {
         let current = inner.current_task;
         let ans = inner.tasks[current].task_syscall_times[_sys_call_id];
 
-        println!("\x1b[31m{}, {}\x1b[0m", _sys_call_id, ans);
+        // println!("\x1b[31m{}, {}\x1b[0m", _sys_call_id, ans);
         ans
     }
 
