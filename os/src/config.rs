@@ -2,6 +2,9 @@
 
 #[allow(unused)]
 
+/// 最大的系统调用数量
+pub const MAX_SYSCALL_NUM: usize = 1000;
+
 /// user app's stack size
 pub const USER_STACK_SIZE: usize = 4096;
 /// kernel stack size
