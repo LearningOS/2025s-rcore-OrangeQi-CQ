@@ -8,21 +8,13 @@ use bitflags::*;
 bitflags! {
     /// page table entry flags
     pub struct PTEFlags: u8 {
-        /// Valid
         const V = 1 << 0;
-        /// Readable
         const R = 1 << 1;
-        /// Writable
         const W = 1 << 2;
-        /// eXecutable
         const X = 1 << 3;
-        /// User
         const U = 1 << 4;
-        /// Global
         const G = 1 << 5;
-        /// Accessed
         const A = 1 << 6;
-        /// Dirty
         const D = 1 << 7;
     }
 }
@@ -69,6 +61,22 @@ impl PageTableEntry {
     /// The page pointered by page table entry is executable?
     pub fn executable(&self) -> bool {
         (self.flags() & PTEFlags::X) != PTEFlags::empty()
+    }
+    /// The page pointered by page table entry is user accessible?
+    pub fn user(&self) -> bool {
+        (self.flags() & PTEFlags::U) != PTEFlags::empty()
+    }
+    /// The page pointered by page table entry is global?
+    pub fn global(&self) -> bool {
+        (self.flags() & PTEFlags::G) != PTEFlags::empty()
+    }
+    /// The page pointered by page table entry is accessed?
+    pub fn accessed(&self) -> bool {
+        (self.flags() & PTEFlags::A) != PTEFlags::empty()
+    }
+    /// The page pointered by page table entry is dirty?
+    pub fn dirty(&self) -> bool {
+        (self.flags() & PTEFlags::D) != PTEFlags::empty()
     }
 }
 
