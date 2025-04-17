@@ -25,6 +25,7 @@ impl BlockDevice for BlockFile {
     }
 }
 
+
 fn main() {
     easy_fs_pack().expect("Error when packing easy-fs!");
 }
